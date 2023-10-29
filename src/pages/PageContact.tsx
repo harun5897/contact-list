@@ -18,20 +18,6 @@ const ElementProses = () => {
     <>
       <Menu addContact='Add' myContact='My Contact' favoriteContact='Favorite' />
       {data.contact.map((detail: TypeOfContact) => {
-        if (idFavoriteContact.includes(detail.id)) {
-          return (
-            <Card
-              imgSrc={Avatar}
-              key={detail.id}
-              title={detail.first_name}
-              text={detail.phones[0].number}
-              id={detail.id}
-              favorite={true}
-            />
-          )
-        }
-      })}
-      {data.contact.map((detail: TypeOfContact) => {
         if (!idFavoriteContact.includes(detail.id)) {
           return (
             <Card
