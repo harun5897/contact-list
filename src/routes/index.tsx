@@ -3,6 +3,7 @@ import PageContactDetail from "@/pages/PageContactDetail"
 import PageContact from "@/pages/PageContact"
 import PageContactFavorite from "@/pages/PageContactFavorite"
 import PageContactAdd from "@/pages/PageContactAdd"
+import PageContactEdit from "@/pages/PageContactEdit"
 
 export const router = createBrowserRouter([
     {
@@ -14,11 +15,15 @@ export const router = createBrowserRouter([
         element: <PageContactFavorite />
     },
     {
-        path: "/contact/:contactID",
+        path: "/contact/:id",
         element: <PageContactDetail />
     },
     {
         path: "/add-contact",
         element: <PageContactAdd />
+    },
+    {
+        path: "/edit-contact/:id",
+        element: <PageContactEdit />
     },
 ])
