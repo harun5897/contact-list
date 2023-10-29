@@ -1,5 +1,6 @@
 import { useQuery } from '@apollo/client'
 import { useParams } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 import Img from '@/components/Img/Img'
 import Button from '@/components/Button/Button'
 import Avatar from '@/assets/avatar-2.png'
@@ -10,10 +11,10 @@ import MenuDetail from '@/components/Menu/MenuDetail'
 import ContactDetail from '@/schema/useContact'
 
 const ElementContactDetail = () => {
-    const { contactID } = useParams()
+    const { id } = useParams()
     const { getContactDetail } = ContactDetail
     const { loading, error, data } = useQuery(getContactDetail, {
-        variables: { "id": contactID },
+        variables: { "id": id },
     })
     if (loading) return <p>Loading...</p>
     if (error) return <p>Error : {error.message}</p>
@@ -34,7 +35,9 @@ const ElementContactDetail = () => {
                 phones={data.contact_by_pk.phones} 
                 id={data.contact_by_pk.id}
             /><br/>
-            <Button text='Edit' onClick={()=> {}} />
+            <NavLink to={`/edit-contact/${data.contact_by_pk.id}`}>
+                <Button text='Edit' onClick={()=> {}} />
+            </NavLink>
         </>
     )
 }
