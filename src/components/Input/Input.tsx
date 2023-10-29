@@ -1,10 +1,18 @@
 import {InputWrapper } from './input.style'
-import { ChangeEvent, useState } from 'react'
+import { ChangeEvent, useState, useEffect  } from 'react'
 import { isAlphabet, isNumeric } from '@/schema/useValidatorInput'
 
-export default function Input (props: { type: string; onValueChange: (value: string | number) => void }) {
-    const [inputValue, setInputValue] = useState<string|number>('')
+interface InputProps {
+    value: string | number
+    type: string
+    onValueChange: (value: string | number) => void
+}
 
+export default function Input (props: InputProps) {
+    const [inputValue, setInputValue] = useState<string|number>('')
+    useEffect(() => {
+        setInputValue(props.value)
+    }, [props.value])
     const handleInputChange = (input: ChangeEvent<HTMLInputElement>) => {
         const value = input.target.value
         if (props.type === 'strings' && isAlphabet(value)) {
