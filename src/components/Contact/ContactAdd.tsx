@@ -47,7 +47,7 @@ export default function ContactAdd() {
                     setTimeout(() => {
                         navigate('/')
                         setSuccess(false)
-                    }, 2000)
+                    }, 1500)
                 }
                 setLoading(false)
             }   catch (e) { setLoading(false) }
@@ -57,11 +57,11 @@ export default function ContactAdd() {
         <>
         <ContactWrapper>
             <ContactLabel><Paragraph text='First Name' /></ContactLabel>
-            <ContactDetail><Input type='strings' onValueChange={ getFirstName } /></ContactDetail>
+            <ContactDetail><Input value={''} type='strings' onValueChange={ getFirstName } /></ContactDetail>
             <ContactLabel><Paragraph text='Last Name' /></ContactLabel>
-            <ContactDetail><Input type='strings' onValueChange={ getLastName } /></ContactDetail>
+            <ContactDetail><Input value={''} type='strings' onValueChange={ getLastName } /></ContactDetail>
             <ContactLabel><Paragraph text='Phone Number' /></ContactLabel>
-            <ContactDetail><Input type='numbers' onValueChange={ getPhoneNumber } /></ContactDetail>
+            <ContactDetail><Input value={''} type='numbers' onValueChange={ getPhoneNumber } /></ContactDetail>
         </ContactWrapper><br />
         <Button text='Save' onClick={ trigerPostContact }></Button>
         { loading && <Paragraph text='Loading...'/> }
