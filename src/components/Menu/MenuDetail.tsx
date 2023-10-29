@@ -8,7 +8,7 @@ import {
     getArrayFromLocalStorage 
 } from '@/schema/useLocalStorage'
 import { useState, useEffect } from 'react'
-import { NavLink } from "react-router-dom"
+import { NavLink, useLocation   } from "react-router-dom"
 import Favorite from '@/assets/favorit.png'
 import Star from '@/assets/star.png'
 import Img from '@/components/Img/Img'
@@ -47,10 +47,12 @@ export default function MenuDetail( props: {idContact: number}) {
         }
         setstateFavoriteContact(updatedFavoriteContacts)
     }
+    const location  = useLocation ()
+    const originalPath = location.pathname.split('/')[1]
     return (
         <MenuWrapper>
             <MenuBox>
-                <NavLink to='/'>
+                <NavLink to={originalPath == 'contact' ? `/`: `/contact/${props.idContact}`}>
                     <MenuTitle> Back </MenuTitle>
                 </NavLink>
                 <MenuTitle onClick={() => trigerFavorite(props.idContact)}>
