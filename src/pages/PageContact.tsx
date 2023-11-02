@@ -13,6 +13,7 @@ const ElementProses = () => {
     const [contact, setContact] = useState<Array<TypeOfContact>>([])
     const [offset, setOffset] = useState<number>(0)
     const [loadings, setLoadings] = useState<boolean>(false)
+    const [search, setSearch] = useState<string|number>('')
 
     const { getContact } = Contact
     const { loading, error, data, refetch } = useQuery(getContact, {
@@ -25,8 +26,12 @@ const ElementProses = () => {
     useEffect(() => {
         setLoadings(false)
         if(data && Array.isArray(data.contact)) {
-        setContact(previous => [...previous, ...data.contact])
-    }
+            if(search.toString().length > 0) {
+                setContact(data.contact)
+            } else {
+                setContact(previous => [...previous, ...data.contact])
+            }
+        }
     }, [data])
 
     useEffect(() => {
@@ -37,8 +42,8 @@ const ElementProses = () => {
                 setOffset(prev => prev + 5)
             }
         }
-            window.addEventListener('scroll', handleScroll)
-            return () => window.removeEventListener('scroll', handleScroll)
+        window.addEventListener('scroll', handleScroll)
+        return () => window.removeEventListener('scroll', handleScroll)
     },[])
 
     useEffect(()=> {
@@ -47,6 +52,15 @@ const ElementProses = () => {
             setLoadings(true)
         }
     },[offset])
+
+    const getSearch = (value: string | number) => setSearch(value)
+
+    useEffect(() => {
+        if(search.toString().length > 3)
+            refetch ({ offset: 0, limit: 10, where: { first_name: {_like: `%${search}%`}} })
+        if(search.toString().length == 1) 
+            refetch ({ offset: 0, limit: 10, where: { first_name: {_like: `%%`}} })
+    },[search])
  
     if (loading) return <p>Loading...</p>
     if (error) return <p>Error : {error.message}</p>
@@ -54,7 +68,7 @@ const ElementProses = () => {
 
     return (
     <>
-        <Menu addContact='Add' myContact='My Contact' favoriteContact='Favorite' />
+        <Menu addContact='Add' myContact='My Contact' favoriteContact='Favorite' dataSearch={ getSearch } />
         {contact.map((detail: TypeOfContact, index: number) => {
             if (!idFavoriteContact.includes(detail.id)) {
                 return (

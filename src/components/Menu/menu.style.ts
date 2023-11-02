@@ -2,7 +2,7 @@ import { css } from '@emotion/react'
 import styled from '@emotion/styled'
 
 const menuWrapperStyle = () => css`
-    margin-bottom: 20px;
+    margin-bottom: 5px;
     position: -webkit-sticky;
     position: sticky;
     top: 0;
@@ -15,6 +15,7 @@ const menuBoxStyle = () => css`
     align-items: center;
     padding: 10px 0px;
     border-bottom: 3px solid #ea4c89;
+    margin-bottom: 5px;
 `
 const menuTitle = () => css`
     font-size: 16px;

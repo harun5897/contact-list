@@ -1,3 +1,4 @@
+import Input from '../Input/Input'
 import { 
     MenuWrapper,
     MenuBox,
@@ -9,8 +10,11 @@ interface MenuProps {
     addContact: string
     myContact: string
     favoriteContact: string
+    dataSearch: (value: string | number) => void
 }
+
 export default function Menu(props: MenuProps) {
+    const dataInputSearch = (value: string | number) => props.dataSearch(value)
     return (
         <MenuWrapper>
             <MenuBox>
@@ -24,6 +28,7 @@ export default function Menu(props: MenuProps) {
                     <MenuTitle>{ props.favoriteContact }</MenuTitle>
                 </NavLink>
             </MenuBox>
+            <Input value={''} placeholder='Search' type='strings' onValueChange={dataInputSearch} />
         </MenuWrapper>
     )
 }
