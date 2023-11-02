@@ -46,6 +46,7 @@ export default function ContactAdd() {
                     setSuccess(true)
                     setTimeout(() => {
                         navigate('/')
+                        window.location.reload() 
                         setSuccess(false)
                     }, 1500)
                 }

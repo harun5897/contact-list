@@ -17,8 +17,9 @@ const ElementProses = () => {
     const { getContact } = Contact
     const { loading, error, data, refetch } = useQuery(getContact, {
         variables: {
-        offset: 0,
-        limit: 10
+            offset: 0,
+            limit: 10,
+            order_by: [{id: 'desc'}]
         }
     })
     useEffect(() => {
