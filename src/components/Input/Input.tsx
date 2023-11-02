@@ -5,6 +5,7 @@ import { isAlphabet, isNumeric } from '@/schema/useValidatorInput'
 interface InputProps {
     value: string | number
     type: string
+    placeholder: string
     onValueChange: (value: string | number) => void
 }
 
@@ -28,6 +29,7 @@ export default function Input (props: InputProps) {
                 type={props.type}
                 value={inputValue}
                 onChange={handleInputChange}
+                placeholder={props.placeholder}
             />
         )
 }

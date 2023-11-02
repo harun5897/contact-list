@@ -77,11 +77,11 @@ export default function ContactEdit(props: TypeOfContact ) {
         <>
         <ContactWrapper>
             <ContactLabel><Paragraph text='First Name' /></ContactLabel>
-            <ContactDetail><Input value={firstName} type='strings' onValueChange={ getFirstName } /></ContactDetail>
+            <ContactDetail><Input placeholder='' value={firstName} type='strings' onValueChange={ getFirstName } /></ContactDetail>
             <ContactLabel><Paragraph text='Last Name' /></ContactLabel>
-            <ContactDetail><Input value={lastName} type='strings' onValueChange={ getLastName } /></ContactDetail>
+            <ContactDetail><Input placeholder='' value={lastName} type='strings' onValueChange={ getLastName } /></ContactDetail>
             <ContactLabel><Paragraph text='Phone Number' /></ContactLabel>
-            <ContactDetail><Input value={phoneNumber} type='numbers' onValueChange={ getPhoneNumber } /></ContactDetail>
+            <ContactDetail><Input placeholder='' value={phoneNumber} type='numbers' onValueChange={ getPhoneNumber } /></ContactDetail>
         </ContactWrapper><br />
         <Button text='Save' onClick={ trigerPostContact }></Button>
         { loading && <Paragraph text='Loading...'/> }
