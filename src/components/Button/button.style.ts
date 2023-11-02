@@ -12,6 +12,7 @@ const buttonStyle = () => css`
     &:hover {
         background-color: #F67280;
     }
+    margin: 3px;
 `
 export const ButtonStyled = styled.button`
 	${buttonStyle}

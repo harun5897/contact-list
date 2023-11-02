@@ -6,7 +6,6 @@ interface StylePosisition {
 }
 
 const imgWrapper = (params: StylePosisition) => css`
-	width: 100%;
 	display: flex;
 	justify-content: ${params.position};
 `
