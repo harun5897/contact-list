@@ -92,4 +92,13 @@ export default class Contact {
       }
     }
   `;
+  static deleteContactPhonne = gql`
+    mutation MyMutation($id: Int!) {
+      delete_contact_by_pk(id: $id) {
+        first_name
+        last_name
+        id
+      }
+    }
+  `;
 }
